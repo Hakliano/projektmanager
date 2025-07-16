@@ -1,7 +1,7 @@
 # app.py
 
 from flask import Flask, render_template, request, redirect, url_for, make_response
-import sqlite3
+import sqlite3, os
 from datetime import date
 from fpdf import FPDF
 from datetime import datetime
@@ -22,7 +22,8 @@ def verify_password(username, password):
         return username
 
 app = Flask(__name__)
-DB_NAME = "projektmanager.db"
+DB_NAME = os.path.join(os.path.dirname(__file__), "projektmanager.db")
+
 
 def get_db_connection():
     conn = sqlite3.connect(DB_NAME)
