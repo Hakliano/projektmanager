@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>📋 Seznam projektů</h2>
+<ul>
+    {% for project in projects %}
+        <li><strong>{{ project["name"] }}</strong> – {{ project["contact_person"] }}</li>
+        <li><a href="{{ url_for('project_detail', project_id=project['id']) }}"><strong>{{ project["name"] }}</strong></a> – {{ project["contact_person"] }}</li>
+    {% else %}
+        <p>Žádné projekty zatím nejsou.</p>
+    {% endfor %}
+</ul>
+{% endblock %}

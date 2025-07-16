@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>➕ Nový projekt</h2>
+<form method="post">
+    <label>Název projektu: <input type="text" name="name" required></label><br>
+    <label>Kontaktní osoba: <input type="text" name="contact_person"></label><br>
+    <label>Kontaktní email: <input type="email" name="contact_email"></label><br>
+    <label>Technický email: <input type="email" name="tech_email"></label><br>
+    <label>Web: <input type="url" name="website"></label><br>
+    <label>Nick: <input type="text" name="nickname"></label><br>
+    <label>Heslo: <input type="text" name="password"></label><br>
+    <label>Cena za hodinu: <input type="number" name="hourly_rate" step="0.01"></label><br>
+    <label>Externí výdaje: <input type="number" name="external_expenses" step="0.01"></label><br>
+    <label>Sleva v %: <input type="number" name="discount_percent" step="0.01"></label><br>
+    <label>Sleva v Kč: <input type="number" name="discount_amount" step="0.01"></label><br>
+    <label>Komentář:<br>
+        <textarea name="comment" rows="4" cols="40"></textarea>
+    </label><br>
+    <button type="submit">💾 Uložit projekt</button>
+</form>
+{% endblock %}

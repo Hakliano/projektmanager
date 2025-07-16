@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Projekt Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>📁 Projekt Manager</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">🏠 Domů</a> |
+            <a href="{{ url_for('new_project') }}">➕ Nový projekt</a>
+        </nav>
+        <hr>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <hr>
+        <p style="font-size: 0.8em;">&copy; Vaše blahorodí, pan Ředitel – {{ current_year }}</p>
+    </footer>
+</body>
+</html>
