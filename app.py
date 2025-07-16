@@ -2,14 +2,19 @@
 
 from flask import Flask, render_template, request, redirect, url_for, make_response
 import sqlite3, os
-from datetime import date
+from datetime import date, datetime
 from fpdf import FPDF
 from datetime import datetime
 from flask_httpauth import HTTPBasicAuth
 from werkzeug.security import check_password_hash, generate_password_hash
 import io
 
+# základní proměnné
+BASE_DIR = os.path.dirname(__file__)
+DB_NAME  = os.path.join(BASE_DIR, "projektmanager.db")
+
 auth = HTTPBasicAuth()
+
 
 # Nastavení uživatele a hesla
 users = {
@@ -113,10 +118,15 @@ def export_project_pdf(project_id):
     # PDF generace
     pdf = FPDF()
     pdf.add_page()
-    pdf.image("static/logo_ulovsalon.png", x=160, y=10, w=35)
-    pdf.add_font('DejaVu', '', 'fonts/DejaVuSans.ttf', uni=True)            # normální
-    pdf.add_font('DejaVu', 'B', 'fonts/DejaVuSans-Bold.ttf', uni=True)      # tučný
-    pdf.set_font("DejaVu", '', 12)
+
+    # v export_project_pdf (přímo pod pdf = FPDF())
+    logo_path   = os.path.join(BASE_DIR, "static", "logo_ulovsalon.png")
+    font_regular = os.path.join(BASE_DIR, "fonts", "DejaVuSans.ttf")
+    font_bold    = os.path.join(BASE_DIR, "fonts", "DejaVuSans-Bold.ttf")
+
+    pdf.image(logo_path, x=160, y=10, w=35)
+    pdf.add_font('DejaVu', '', font_regular, uni=True)
+    pdf.add_font('DejaVu', 'B', font_bold, uni=True)
 
     today = datetime.today().strftime('%d.%m.%Y')
 
