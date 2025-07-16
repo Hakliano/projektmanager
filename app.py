@@ -22,8 +22,7 @@ def verify_password(username, password):
         return username
 
 app = Flask(__name__)
-DB_NAME = os.path.join(os.path.dirname(__file__), "projektmanager.db")
-
+DB_NAME = "/home/Nuna91/projektmanager/projektmanager.db"
 
 def get_db_connection():
     conn = sqlite3.connect(DB_NAME)
